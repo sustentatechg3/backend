@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -19,6 +20,18 @@ public class Categoria {
 	@NotBlank(message = "O atributo Tipo não pode ser vazio e nem ser um espaço em branco!")
 	@Size(min = 5, max = 255, message = "No mínimo 5 e máximo 255 caracteres!")
 	private String tipo;
+	
+	@NotNull(message = "O atributo Descrição não pode ser vazio!")
+	@Size(max = 1000, message = "No máximo 1000 caracteres!")
+	private String descricao;
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	public Long getId() {
 		return id;
