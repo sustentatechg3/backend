@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -36,9 +37,9 @@ public class Usuario {
 	@Size(min = 8, message = "A senha deve ter no minimo 8 caracter")
 	private String senha;
 	
-	@OneToMany
+	@OneToOne
 	@JsonIgnoreProperties("usuario")
-	private Produtos produtos;
+	private Produto produto;
 
 	public Long getId() {
 		return id;
@@ -80,12 +81,12 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Produtos getProdutos() {
-		return produtos;
+	public Produto getProdutos() {
+		return produto;
 	}
 
-	public void setProdutos(Produtos produtos) {
-		this.produtos = produtos;
+	public void setProdutos(Produto produto) {
+		this.produto = produto;
 	}
 
 }

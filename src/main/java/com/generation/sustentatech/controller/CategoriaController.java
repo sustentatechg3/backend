@@ -66,7 +66,7 @@ public ResponseEntity<Categoria> putCategoria(@Valid @RequestBody Categoria cate
 			.orElse(ResponseEntity.notFound().build());
 }	
 
-@DeleteMapping("/{id]")
+@DeleteMapping("/{id}")
 public ResponseEntity<Categoria> deleteCategoria(@PathVariable Long id){
 	if (categoriaRepository.existsById(id)) {
 		categoriaRepository.deleteById(id);
