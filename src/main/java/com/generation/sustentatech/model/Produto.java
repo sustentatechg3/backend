@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
@@ -30,7 +31,7 @@ public class Produto {
 	
 	@Digits(integer = 3, fraction = 2, message = "Apenas centenas e 2 casas após o ponto.")
 	@Positive
-	@NotBlank(message = "O valor é obrigatorio")
+	@NotNull(message = "O valor é obrigatorio")
 	private BigDecimal valor;
 	
 	@NotBlank(message = "O nome do Produto é obrigatorio")
