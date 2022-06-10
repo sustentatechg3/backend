@@ -1,13 +1,19 @@
 package com.generation.sustentatech.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_categorias")
@@ -24,6 +30,18 @@ public class Categoria {
 	@NotNull(message = "O atributo Descrição não pode ser vazio!")
 	@Size(max = 1000, message = "No máximo 1000 caracteres!")
 	private String descricao;
+	
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("categoria")
+	private List <Produto> produto;
+
+	public List<Produto> getProdutos() {
+		return produto;
+	}
+
+	public void setProdutos(List<Produto> produto) {
+		this.produto = produto;
+	}
 
 	public String getDescricao() {
 		return descricao;
