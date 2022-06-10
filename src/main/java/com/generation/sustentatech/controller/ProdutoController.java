@@ -48,7 +48,7 @@ public ResponseEntity<Produto> getById(@PathVariable Long id){
 
 @GetMapping("/nome/{nome}")
 public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome){
-	return ResponseEntity.ok(produtoRepository.findAllByTipoContainingIgnoreCase(nome));
+	return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 }
 
 @PostMapping
