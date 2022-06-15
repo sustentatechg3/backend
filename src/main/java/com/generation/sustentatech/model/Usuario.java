@@ -1,11 +1,13 @@
 package com.generation.sustentatech.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -19,30 +21,29 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Entity
 @Table(name = "tb_usuarios")
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "O nome do usuario é obrigatorio")
 	@Size(min = 3, max = 100, message = "Seu nome deve ter no minimo 3 caracter")
 	private String nome;
-	
+
 	@Schema(example = "email@email.com.br")
 	@NotNull(message = "O email é obrigatorio")
 	@Email
 	private String usuario;
-	
-	
+
 	private String foto;
-	
+
 	@NotBlank(message = "O senha é obrigatorio")
 	@Size(min = 8, message = "A senha deve ter no minimo 8 caracter")
 	private String senha;
-	
-	@OneToOne
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
-	private Produto produto;
+	private List<Produto> produto;
 
 	public Long getId() {
 		return id;
@@ -84,12 +85,13 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Produto getProdutos() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProdutos(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
 
+	
 }
