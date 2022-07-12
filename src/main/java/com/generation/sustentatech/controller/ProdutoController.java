@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.sustentatech.model.Produto;
+import com.generation.sustentatech.repository.CategoriaRepository;
 import com.generation.sustentatech.repository.ProdutoRepository;
 
 @RestController
@@ -27,8 +28,11 @@ public class ProdutoController {
 
 @Autowired
  private ProdutoRepository produtoRepository;
+
+@Autowired
+private CategoriaRepository categoriaRepository;
  	
-@GetMapping 
+@GetMapping("/all")
 public ResponseEntity<List<Produto>> getAll(){
 	return ResponseEntity.ok(produtoRepository.findAll());
 	

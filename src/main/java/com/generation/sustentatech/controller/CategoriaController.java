@@ -26,10 +26,11 @@ import com.generation.sustentatech.repository.CategoriaRepository;
 public class CategoriaController {
 
 @Autowired
- private CategoriaRepository categoriaRepository;
+private CategoriaRepository categoriaRepository;
  	
 @GetMapping 
 public ResponseEntity<List<Categoria>> getAll(){
+	
 	return ResponseEntity.ok(categoriaRepository.findAll());
 	
 }

@@ -164,6 +164,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			http.authorizeRequests()
 				.antMatchers("/usuarios/logar").permitAll()
 				.antMatchers("/usuarios/cadastrar").permitAll()
+				.antMatchers(HttpMethod.GET, "/usuarios/*").permitAll()
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
 				.anyRequest().authenticated()
 				.and().httpBasic()
