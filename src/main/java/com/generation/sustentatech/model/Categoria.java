@@ -35,22 +35,6 @@ public class Categoria {
 	@JsonIgnoreProperties("categoria")
 	private List <Produto> produto;
 
-	public List<Produto> getProdutos() {
-		return produto;
-	}
-
-	public void setProdutos(List<Produto> produto) {
-		this.produto = produto;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -66,7 +50,22 @@ public class Categoria {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
 
 	
 }
